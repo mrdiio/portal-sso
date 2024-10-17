@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const authApi = axios.create({
-  baseURL: `${process.env.NEXT_PUBLIC_API_URL}/auth`,
+  baseURL: `${process.env.NEXTAUTH_URL}/sso/auth`,
   headers: {
     'Content-Type': 'application/json',
   },

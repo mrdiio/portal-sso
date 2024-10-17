@@ -46,8 +46,6 @@ export default function FormSignIn() {
       callbackUrl: searchParams.get('callbackUrl') || '/sessions',
     })
 
-    console.log(login)
-
     if (login?.error) {
       form.setError('email', {
         type: 'manual',

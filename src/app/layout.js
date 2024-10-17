@@ -1,5 +1,6 @@
 import localFont from 'next/font/local'
 import './globals.css'
+import QueryProvider from '@/lib/queryProvider'
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -23,7 +24,9 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="min-h-screen flex flex-col">{children}</div>
+        <QueryProvider>
+          <div className="min-h-screen flex flex-col">{children}</div>
+        </QueryProvider>
       </body>
     </html>
   )
