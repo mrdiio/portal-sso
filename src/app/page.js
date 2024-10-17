@@ -3,10 +3,16 @@ import { authOptions } from '@/lib/auth'
 import { getServerSession } from 'next-auth'
 import { redirect } from 'next/navigation'
 
-export default async function Home() {
+export default async function Home({ searchParams }) {
   const session = await getServerSession(authOptions)
 
-  if (session) redirect('/sessions')
+  if (session) {
+    if (searchParams['redirectUrl']) {
+      redirect(`${searchParams['redirectUrl']}?token=${session.accessToken}`)
+    } else {
+      redirect(searchParams['redirectUrl'] || '/sessions')
+    }
+  }
 
   return (
     <main className="flex-grow flex flex-col items-center justify-center px-5">
@@ -18,7 +24,7 @@ export default async function Home() {
           </h1>
         </div>
 
-        <FormSignIn />
+        <FormSignIn session={session} />
       </div>
     </main>
   )

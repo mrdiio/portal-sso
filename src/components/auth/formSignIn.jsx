@@ -54,8 +54,6 @@ export default function FormSignIn() {
       setLoading(false)
     } else {
       router.refresh()
-      router.push(login.url)
-      // window.location.assign('http://localhost:3000/')
     }
   }
 
