@@ -19,3 +19,13 @@ export const loginService = async (email, password) => {
     throw new Error(error.response.data?.message)
   }
 }
+
+export const refreshTokenService = async (refreshToken) => {
+  const res = await authApi.get('/refresh', {
+    headers: {
+      Authorization: `Bearer ${refreshToken}`,
+    },
+  })
+
+  return res
+}

@@ -1,5 +1,6 @@
 import { authOptions } from '@/lib/auth'
 import { getServerSession } from 'next-auth'
+import Profile from './profile'
 
 export default async function Page() {
   const session = await getServerSession(authOptions)
@@ -8,8 +9,7 @@ export default async function Page() {
       Session data
       {session ? (
         <>
-          <div>Nama : {session.user.name}</div>
-          <div>Email : {session.user.email}</div>
+          <Profile />
         </>
       ) : (
         <div>
