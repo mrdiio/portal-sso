@@ -1,10 +1,12 @@
 import axios from 'axios'
+import { cookies } from 'next/headers'
 
 const authApi = axios.create({
   baseURL: `${process.env.NEXTAUTH_URL}/sso/auth`,
   headers: {
     'Content-Type': 'application/json',
   },
+  withCredentials: true,
 })
 
 export const loginService = async (email, password) => {
